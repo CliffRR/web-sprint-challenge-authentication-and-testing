@@ -9,7 +9,7 @@ validateRegistration,
 checkUsernameExists,
 } = require('../middleware/restricted')
 
-router.post('/register', checkUsernameFree, validateRegistration, (req, res, next) => {
+router.post('/register', validateRegistration, checkUsernameFree, (req, res, next) => {
   // res.end('implement register, please!');
   const { username, password } = req.body
   const hash = bcrypt.hashSync(password, 8)
