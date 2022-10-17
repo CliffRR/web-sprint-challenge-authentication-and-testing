@@ -16,6 +16,7 @@ router.post('/register', checkUsernameFree, validateRegistration, (req, res, nex
 
   User.add({ username, password: hash })
     .then(newUser => {
+      console.log(newUser)
       res.status(201).json(newUser)
     })
     .catch(next)
@@ -56,9 +57,9 @@ router.post('/login', validateRegistration, checkUsernameExists,  (req, res, nex
     })
   } else {
     res.json({
-      message: "Invalid credentials"
+      message: "invalid credentials"
     })
-    next({ status: 401, message: 'Invalid credentials'})
+    next({ status: 401, message: 'invalid credentials'})
   }
   /*
     IMPLEMENT

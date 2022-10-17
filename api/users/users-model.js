@@ -8,9 +8,10 @@ function findById(user_id) {
 
 async function add(user) {
     const [id] = await db('users').insert(user)
-    return findById(id)
-    // return db('users')
-    // .where({id}).first()
+    //console.log(findById(id)) 
+    //return
+    return db('users')
+    .where({id}).first()
 }
 
 function findBy(specified_username) {
