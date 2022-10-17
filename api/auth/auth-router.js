@@ -56,10 +56,12 @@ router.post('/login', validateRegistration, checkUsernameExists,  (req, res, nex
       token,
     })
   } else {
-    res.json({
-      message: "invalid credentials"
-    })
-    next({ status: 401, message: 'invalid credentials'})
+    res.status(401).json({message: 'invalid credentials'})
+    // res.json({
+    //   message: "invalid credentials"
+    // })
+    next(res.status(401).json({message: 'invalid credentials'}))
+    // next({ status: 401, message: 'invalid credentials'})
   }
   /*
     IMPLEMENT
